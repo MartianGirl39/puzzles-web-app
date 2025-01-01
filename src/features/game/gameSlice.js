@@ -34,7 +34,7 @@ export const gameSlice = createSlice({
     },
     setMode: (state, action) => {
         state.mode = action.payload
-        if (action.payload == 'errors' && state.hints > 0){
+        if (action.payload === 'errors' && state.hints > 0){
           state.hints -= 1
         }
     },
@@ -74,7 +74,7 @@ export const gameSlice = createSlice({
     adjustPencils: (state, action) => {
       const { index, value } = action.payload;
       const newVal = state.game[index]
-      if (!newVal.pencils.includes(value) && newVal.value == 0) {
+      if (!newVal.pencils.includes(value) && Number(newVal.value) === 0) {
         newVal.pencils.push(value)
         state.game = [...state.game.slice(0, index), newVal ,...state.game.slice(index + 1)];
       }

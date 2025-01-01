@@ -4,10 +4,10 @@ import "./Home.css"
 
 export const Home = () => {
   const images = [
-    { src: "/sudoku-screen-shot.png", alt: "Relaxing Image 1" },
-    { src: "image2.jpg", alt: "Relaxing Image 2" },
-    { src: "image3.jpg", alt: "Relaxing Image 3" },
-  ];
+    { src: "/sudoku-screen-shot.png", alt: "sudoku board" },
+    { src: "/futoshiki.png", alt: "futoshiki board" },
+    { src: "/complete.png", alt: "complete sudoku board" },
+  ]
 
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export const Home = () => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000);
     return () => clearInterval(interval); // Cleanup on component unmount
-  }, []);
+  }, [images]);
 
   return (
     <div className="home-main">

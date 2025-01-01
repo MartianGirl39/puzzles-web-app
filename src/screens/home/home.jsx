@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css"
 
 export const Home = () => {
-  const images = [
+  const images = useMemo([
     { src: "/sudoku-screen-shot.png", alt: "sudoku board" },
     { src: "/futoshiki.png", alt: "futoshiki board" },
     { src: "/complete.png", alt: "complete sudoku board" },
-  ]
+  ])
 
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();

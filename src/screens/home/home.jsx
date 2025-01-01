@@ -20,7 +20,7 @@ export const Home = () => {
 
     // Cleanup the interval on unmount
     return () => clearInterval(interval);
-  }, []); // No dependencies, runs only once on mount
+  }, [images.length]); // Add images.length as a dependency
 
   return (
     <div className="home-main">

@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Home.css"
+import "./Home.css";
 
 export const Home = () => {
-  const images = useMemo([
+  const images = [
     { src: "/sudoku-screen-shot.png", alt: "sudoku board" },
     { src: "/futoshiki.png", alt: "futoshiki board" },
     { src: "/complete.png", alt: "complete sudoku board" },
-  ])
+  ];
 
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
@@ -17,8 +17,10 @@ export const Home = () => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000);
-    return () => clearInterval(interval); // Cleanup on component unmount
-  }, [images]);
+
+    // Cleanup the interval on unmount
+    return () => clearInterval(interval);
+  }, []); // No dependencies, runs only once on mount
 
   return (
     <div className="home-main">

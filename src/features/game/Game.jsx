@@ -1,37 +1,35 @@
 import { useSelector } from "react-redux"
 import { GameControls } from "./components/GameControls"
-import { selectStatus, selectGame, initGame } from "./gameSlice"
+import { selectStatus, initGame } from "./gameSlice"
 import './game.css'
 import { useDispatch } from "react-redux"
-import { useState, useEffect } from "react"
-import { mockGetNewBoard } from "./api/fetchGame"
+import { useState, useEffect, useCallback } from "react"
+// import { mockGetNewBoard } from "./api/fetchGame"
 import { GameBoard } from "./components/GameBoard"
-import { useNavigate } from "react-router-dom"
 
 export const Game = ({size, fetchHandler, errorCheckHandler}) => {
     const status = useSelector(selectStatus)
-    const game = useSelector(selectGame);
     const [loaded, setLoaded] = useState('loading')
     const dispatch = useDispatch()
-    const navigate = useNavigate()
 
-    const updateCSSVariables = () => {
+    const updateCSSVariables = useCallback(() => {
         document.documentElement.style.setProperty('--grid-size', size);
-      };
+    }, [size]);
 
-    const loadNewGame = () => {
-        fetchHandler(size).then( res => {
-            dispatch(initGame(res))
-            setLoaded('loaded')
-        })
-    }
+    // Memoize the loadNewGame function to avoid unnecessary re-creations
+    const loadNewGame = useCallback(() => {
+        fetchHandler(size).then(res => {
+            dispatch(initGame(res));
+            setLoaded('loaded');
+        });
+    }, [fetchHandler, dispatch, size]);
 
     useEffect(() => {
         loadNewGame()
         updateCSSVariables()
-    }, [])
+    }, [loadNewGame, updateCSSVariables])
 
-    if (loaded == 'loading') {
+    if (loaded === 'loading') {
         return <p>loading board...</p>
     }
 

@@ -22,7 +22,7 @@ const getErrorsForRows = (game) => {
         const occured = new Map()
         row.forEach((item, rowIndex) => {
             // console.log("item is " + item.value)
-            if(occured.has(item.value) && item.value != 0) {
+            if(occured.has(item.value) && Number(item.value) !== 0) {
                 // console.log(`!!! error found at ${i+rowIndex}: item is ${item.value}`)
                 errors.push(i + rowIndex)
                 errors.push(occured.get(item.value))
@@ -40,13 +40,13 @@ const getErrorsForCol = (game) => {
     const size = Math.sqrt(game.length)
     for (let i=0; i<size; i++) {
         const col = game.filter((item, index) => {
-            if (item == i)  return true
-            else if (item < size) return false
-            return index%size == i
+            if (index === i)  return true
+            else if (index < size) return false
+            return index%size === i
         })
         const occured = new Map()
         col.forEach((item, index) => {
-            if(occured.has(item.value) && item.value != 0) {
+            if(occured.has(item.value) && Number(item.value) !== 0) {
                 // console.log(`error found at ${index*size+i}: item is ${item.value} item is really ${game[index*size+i].value}`)
                 errors.push(index*size+i) // size = 9, i=7, index = 6, 9*7=63+6 = 69
                 errors.push(occured.get(item.value))
@@ -71,7 +71,7 @@ const getErrorsForSquare = (game) => {
             square.forEach((item) => {
                 // console.log(`item is ${item.value}`)
                 const indexFound = game.indexOf(item)
-                if(occured.has(item.value) && item.value != 0) {
+                if(occured.has(item.value) && Number(item.value) !== 0) {
                     // console.log(`error found at ${indexFound}: item is ${item}`)
                     errors.push(indexFound)
                     errors.push(occured.get(item.value))

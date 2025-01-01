@@ -13,7 +13,7 @@ import {
 } from "../gameSlice";
 import { useState } from "react";
 
-export const GameControls = (size) => {
+export const GameControls = () => {
   const activeSquare = useSelector(selectActiveSquare);
   const hints = useSelector(selectHints);
   const solves = useSelector(selectSolves);

@@ -10,13 +10,13 @@ export const GameSelect = () => {
                 <div className="d-flex justify-content-center gap-3">
                     <button 
                         className="btn btn-primary btn-lg" 
-                        onClick={() => {navigate("/sudoku")}}
+                        onClick={() => {navigate("/sudoku/")}}
                     >
                         Sudoku
                     </button>
                     <button 
                         className="btn btn-success btn-lg" 
-                        onClick={() => {navigate("/futoshiki")}}
+                        onClick={() => {navigate("/futoshiki/")}}
                     >
                         Futoshiki
                     </button>

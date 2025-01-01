@@ -1,0 +1,205 @@
+
+:root {
+  --primary-color: #00796b;
+  --secondary-color: #e0f7fa;
+  --grid-size: 9; /* Default grid size */
+  /* --square-size: 60px; */
+}
+
+.game {
+  width: 580px;
+  height: 580px;
+}
+
+/* Main Game Board Container */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), 1fr);
+  grid-template-rows: repeat(var(--grid-size), 1fr);
+  gap: 1px; /* Space between squares */
+  border: 2px solid #33333355;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Individual game square */
+.game-square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 60px; /* Adjust as needed */
+  height: 60px; /* Adjust as needed */
+  font-size: 1.5rem; /* Set default font size */
+  background-color: white;
+  border: 1px solid #ccc; /* Default border for all squares */
+}
+
+/* Styling for squares that are part of the 3x3 sub-grids */
+.game-board .game-square:nth-child(3n+1),
+.game-board .game-square:nth-child(27n+1),
+.game-board .game-square:nth-child(54n+1) {
+  border-left: 2px solid #33333355;  /* Thicker left border */
+}
+.game-board .game-square:nth-child(27n+1),
+.game-board .game-square:nth-child(27n+2),
+.game-board .game-square:nth-child(27n+3),
+.game-board .game-square:nth-child(27n+4),
+.game-board .game-square:nth-child(27n+5),
+.game-board .game-square:nth-child(27n+6),
+.game-board .game-square:nth-child(27n+7),
+.game-board .game-square:nth-child(27n+8),
+.game-board .game-square:nth-child(27n+9){
+  border-top: 2px solid #33333355;  /* Thicker top border */
+}
+
+/* Styling for the individual game square's text */
+.game-square h4 {
+  font-size: 1.5rem;
+  color: darkslategray;
+  margin: 0;
+  padding: 0;
+}
+
+.pencils {
+  font-size: 0.75rem;
+  color: #888;
+  margin: 0;
+}
+
+/* Styling for active squares */
+.game-square.active {
+  background-color: #87ceeb55;
+  border-color: #00796b;
+}
+
+/* Style for the inequality icons */
+.square-hint {
+  z-index: 1;
+  position: absolute;
+  font-size: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* For the hint alignment based on position */
+.top-hint {
+  top: -10px;
+}
+
+.bottom-hint {
+  bottom: -10px;
+}
+
+.right-hint {
+  right: -10px;
+}
+
+.left-hint {
+  left: -10px;
+}
+
+/* Adjust hint size and position based on alignment */
+.square-hint.top-hint {
+  font-size: 1.8em;
+  top: -10px; /* Adjust as needed */
+}
+
+.square-hint.bottom-hint {
+  font-size: 1.8em;
+  bottom: -10px; /* Adjust as needed */
+}
+
+.square-hint.right-hint {
+  font-size: 1.8em;
+  right: -15px; /* Adjust as needed */
+}
+
+.square-hint.left-hint {
+  font-size: 1.8em;
+  left: -15px; /* Adjust as needed */
+}
+
+/* Rotating the hints based on position */
+.bottom-hint {
+  transform: rotate(90deg);
+}
+
+.left-hint {
+  transform: rotate(180deg);
+}
+
+.top-hint {
+  transform: rotate(-90deg);
+}
+
+/* For solved squares */
+.solved h4, .solved.prefilled-square h4{
+  color: rgb(6, 138, 94);
+  transition: color 2s ease-out; 
+}
+
+.cpu-solved h4, .cpu-solved.prefilled-square h4{
+  color: cornflowerblue;
+  transition: color 2s ease-out; 
+
+}
+
+.pencils {
+  font-size: 12px;
+  color: gray;
+}
+
+.spacer {
+  width: 100%;
+  height: 30px;
+}
+
+.active-group {
+  background-color: #87ceeb55;
+}
+
+.number-buttons {
+  margin: 1em;
+}
+
+.game-error h4{
+  color: orangered;
+}
+
+.prefilled-square.game-error h4 {
+  color: red;
+  font-weight: 500;
+}
+
+.prefilled-square h4{
+  font-weight: 500;
+  color: black;
+}
+
+.board-solved, .board-cpu-solved {
+  margin-top: 100px;
+}
+
+.board-solved {
+  border: 2px solid rgb(8, 180, 123);
+  transition: border 2s ease-out;
+}
+
+.board-cpu-solved {
+  border: 2px solid cornflowerblue;
+  transition: border 2s ease-out;
+}
+
+/* Basic styling for the solved squares */
+.game-square.solved {
+  background-color: #7fffd433; /*Green background when solved*/
+  transition: background-color 2s ease-out; /* Background color transition */
+}
+
+.game-square.cpu-solved {
+  background-color: #6495ed33; /*Green background when solved*/
+  transition: background-color 2s ease-out; /* Background color transition */
+}
+
+

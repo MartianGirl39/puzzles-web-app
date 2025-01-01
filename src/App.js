@@ -1,5 +1,4 @@
 import React from 'react';
-import { Game } from './features/game/Game';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Futoshiki } from './screens/futoshiki/Futoshiki';
@@ -7,7 +6,6 @@ import { Home } from './screens/home/home';
 import { Sudoku } from './screens/sudoku/Sudoku';
 import { GameSelect } from './screens/game_select/GameSelect';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { NotFound } from './screens/NotFOund'
 import { SelectGridSize } from './screens/game_select/SelectGridSize';
 
 function App() {
